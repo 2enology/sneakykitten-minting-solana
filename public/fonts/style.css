@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Gulfs Display';
+    src: local('Gulfs Display Expanded'), local('Gulfs-Display-Expanded'),
+        url('GulfsDisplay-Expanded.woff2') format('woff2'),
+        url('GulfsDisplay-Expanded.woff') format('woff'),
+        url('GulfsDisplay-Expanded.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

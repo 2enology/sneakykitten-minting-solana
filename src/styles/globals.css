@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  transition: all ease-in-out;
+  animation-duration: 1000ms;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: #fffdf1 !important;
+}
+
+@font-face {
+  font-family: "Gulfs Display";
+  src: local("Gulfs Display Expanded"), local("Gulfs-Display-Expanded"),
+    url("../../public/fonts/GulfsDisplay-Expanded.woff") format("woff2"),
+    url("../../public/fonts/GulfsDisplay-Expanded.woff2") format("woff"),
+    url("../../public/fonts/GulfsDisplay-Expanded.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-Gulfs {
+  font-family: "Gulfs Display" !important;
+}
+
+.text-shadow1 {
+  text-shadow: 3px 5px 0 #000;
+}
+
+.text-shadow2 {
+  text-shadow: 3px 5px 10px #000;
+}
+
+.card {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  border: 2px solid black;
+  border-bottom: 7px solid black;
+}
+
+.card:nth-child(1) {
+  top: 7rem !important;
+}
+
+.card:nth-child(2) {
+  top: 8rem !important;
+}
+
+.card:nth-child(3) {
+  top: 9rem !important;
+}
+
+.card:nth-child(4) {
+  top: 10rem !important;
+}
+
+.card:nth-child(5) {
+  top: 11rem !important;
+}
+
+.card:nth-child(6) {
+  top: 20rem !important;
+}
+
+.slider {
+  background: #fffdf1;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  -webkit-transform: rotateZ(180deg);
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  animation: scroll 20s linear infinite;
+  display: flex;
+  width: calc(550px * 14);
+}
+
+.slider .slide-track:hover {
+  animation-play-state: paused;
+}
+
+.slider .slide {
+  height: 50px;
+  width: 550px;
+}
+
+.slide:nth-child(1),
+.slide:nth-child(10) {
+  background-color: transparent;
+}
+
+.slide:nth-child(2),
+.slide:nth-child(11) {
+  background-color: transparent;
+}
+
+.slide:nth-child(3),
+.slide:nth-child(12) {
+  background-color: transparent;
+}
+
+.slide:nth-child(4),
+.slide:nth-child(13) {
+  background-color: transparent;
+}
+
+.slide:nth-child(5),
+.slide:nth-child(14) {
+  background-color: transparent;
+}
+
+.slide:nth-child(6),
+.slide:nth-child(15) {
+  background-color: transparent;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.mobile-nav {
+  position: absolute;
+  background-color: #fbbf2d;
+  color: black;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 0;
+  overflow: hidden;
+  box-shadow: 0px 30px 90px rgba(62, 65, 88, 0.4);
+  transition: all 0.3s;
+  display: block;
+}
+
+.mobile-nav.opened {
+  height: auto;
+  transition: all 0.3s;
+  padding: 24px 24px;
+}
