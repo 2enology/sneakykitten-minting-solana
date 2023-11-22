@@ -18,6 +18,7 @@ import Team from "../components/Team";
 import Faq from "../components/Faq";
 import Follow from "../components/Follow";
 import Home from "../components/Home";
+import Slider from "../components/Slider";
 
 export interface NFTType {
   imgUrl: string;

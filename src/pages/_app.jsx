@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 
 import Wallet from "../components/wallet/Wallet";
 import Header from "../components/Header";
@@ -18,18 +19,20 @@ function StakingApp({ Component, pageProps }) {
 
   return (
     <Wallet>
-      <Head>
-        <title>SNEAKY KITTENS</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-      <Header />
-      <section className="flex items-center justify-center w-full">
-        <Component
-          {...pageProps}
-          startLoading={startLoading}
-          closeLoading={closeLoading}
-        />
-      </section>
+      <WalletModalProvider>
+        <Head>
+          <title>SNEAKY KITTENS</title>
+          <link rel="icon" href="/favicon.png" />
+        </Head>
+        <Header />
+        <section className="flex items-center justify-center w-full">
+          <Component
+            {...pageProps}
+            startLoading={startLoading}
+            closeLoading={closeLoading}
+          />
+        </section>
+      </WalletModalProvider>
     </Wallet>
   );
 }
