@@ -37,31 +37,29 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="fixed z-50 flex items-center justify-center w-full bg-transparent bg-opacity-30 backdrop-blur-md">
-        <div className="w-full flex justify-between p-[5px] max-w-[1440px]">
-          <Link href={"/"}>
-            <div className="flex items-center justify-center cursor-pointer -z-10 md:z-10">
-              <img src="/favicon.png" className="w-[80px] h-[80px]" alt="" />
-            </div>
-          </Link>
-          <div className="font-extrabold text-[18px] text-gray-800 uppercase md:flex items-center justify-center gap-10 hidden">
-            {renderHeaderLinks()}
+    <div className="fixed flex items-center justify-center w-full bg-transparent bg-opacity-30 backdrop-blur-md z-[49]">
+      <div className="w-full flex justify-between p-[5px] max-w-[1440px]">
+        <Link href={"/"}>
+          <div className="flex items-center justify-center cursor-pointer -z-10 md:z-10">
+            <img src="/favicon.png" className="w-[80px] h-[80px]" alt="" />
           </div>
-          <div className="flex gap-[18px] items-center z-10">
-            <AuthButton />
-            <div className="z-50 flex justify-center item-center md:hidden">
-              <HamburgerElasticReverse
-                buttonColor="transparent"
-                barColor="black"
-                isActive={isActive}
-                toggleButton={toggleButton}
-              />
-            </div>
-            <div className={`mobile-nav ${isActive ? "opened" : ""}`}>
-              <div className="font-extrabold text-[38px] text-gray-800 uppercase md:flex items-center justify-center gap-10 flex flex-col w-full pt-[100px]">
-                {renderHeaderLinks()}
-              </div>
+        </Link>
+        <div className="font-extrabold text-[18px] text-gray-800 uppercase md:flex items-center justify-center gap-10 hidden">
+          {renderHeaderLinks()}
+        </div>
+        <div className="flex gap-[18px] items-center z-10">
+          <AuthButton />
+          <div className="z-50 flex justify-center item-center md:hidden">
+            <HamburgerElasticReverse
+              buttonColor="transparent"
+              barColor="black"
+              isActive={isActive}
+              toggleButton={toggleButton}
+            />
+          </div>
+          <div className={`mobile-nav ${isActive ? "opened" : ""}`}>
+            <div className="font-extrabold text-[38px] text-gray-800 uppercase md:flex items-center justify-center gap-10 flex flex-col w-full pt-[100px]">
+              {renderHeaderLinks()}
             </div>
           </div>
         </div>

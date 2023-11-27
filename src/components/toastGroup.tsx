@@ -27,7 +27,6 @@ export const errorAlertCenter = (text: string) => {
 
 export const warningAlert = (text: string) => {
   toast.warning(text, {
-    className: "bg-black",
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -54,18 +53,6 @@ export const infoAlert = (text: string) => {
   toast.info(text, {
     position: "top-right",
     autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "colored",
-  });
-};
-
-export const loadingAlert = (text: string) => {
-  toast.loading(text, {
-    position: "top-right",
-    isLoading: true,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
