@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { PuffLoader } from "react-spinners";
+import { FadeLoader } from "react-spinners";
 import { FaArrowLeft } from "react-icons/fa";
 import { MAX_MINTAMOUNT_PERTX, MAX_SUPPLY } from "../config";
 import Link from "next/link";
@@ -14,12 +14,10 @@ import {
   Transaction,
   SystemProgram,
 } from "@solana/web3.js";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   errorAlert,
-  loadingAlert,
   successAlert,
+  warningAlert,
 } from "../components/toastGroup";
 
 export default function Mint() {
@@ -31,7 +29,7 @@ export default function Mint() {
   const [turn, setTurn] = useState(0);
   const wallet = useWallet();
   const devNet = "DH8ozTSc4ZxeHTw15MyLUGCdfytSBTSvYP4erXw1P8wk";
-  const cost = 1;
+  const cost = 0.25;
 
   const rpcUrl = new Connection("https://api.devnet.solana.com");
   useEffect(() => {
@@ -49,70 +47,66 @@ export default function Mint() {
     wallet: WalletContextState,
     totalToMint: number
   ) => {
-    // try {
-    //   if (!wallet.publicKey) {
-    //     return;
-    //   }
-    //   loadingAlert("Approve transaction to mint...");
-    //   setLoading(true);
-    //   const blockhash = await connection.getLatestBlockhash();
-    //   const tx = new Transaction().add(
-    //     solInstruction(
-    //       wallet?.publicKey,
-    //       new PublicKey(devNet),
-    //       +(cost * totalToMint).toFixed(4)
-    //     )
-    //   );
-    //   tx.feePayer = wallet?.publicKey;
-    //   tx.recentBlockhash = blockhash.blockhash;
-    //   let signedTx;
-    //   if (wallet.signTransaction !== undefined) {
-    //     signedTx = await wallet.signTransaction(tx);
-    //     let txId = await connection.sendRawTransaction(signedTx.serialize(), {
-    //       skipPreflight: true,
-    //       maxRetries: 3,
-    //       preflightCommitment: "confirmed",
-    //     });
-    //     await connection.confirmTransaction(txId, "confirmed");
-    //     loadingAlert("Sending transaction... Please do not leave this screen!");
-    //     loadingAlert("Confirming transaction...");
-    //     const confirmed = await axios.post(
-    //       `http://144.126.146.144:8090/mintart/`,
-    //       {
-    //         txhash: txId,
-    //       },
-    //       {
-    //         validateStatus: () => true,
-    //       }
-    //     );
-    //     if (confirmed.data.error || confirmed.status !== 200) {
-    //       errorAlert(
-    //         `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
-    //       );
-    //     } else {
-    //       if (confirmed.data?.message === "0 NFT minted") {
-    //         errorAlert(`Error! Something went wrong minting your NFT.`);
-    //       } else {
-    //         successAlert("Successfully minted!");
-    //       }
-    //       setLoading(false);
-    //     }
-    //   }
-    // } catch (e: any) {
-    //   console.log(e);
-    //   //   const msg = fromTxError(e);
-    //   //   if (msg) {
-    //   //     toast.error(msg.message);
-    //   //   } else {
-    //   //     const msg = e.message || e.toString();
-    //   //     toast.error(msg);
-    //   //   }
-    // } finally {
-    //   setLoading(false);
-    //   setTimeout(() => {
-    //     toast.dismiss();
-    //   }, 5000);
-    // }
+    setLoading(true);
+    try {
+      if (!wallet.publicKey) {
+        return;
+        warningAlert("Please Connect wallet!");
+      }
+      setLoading(true);
+      const blockhash = await connection.getLatestBlockhash();
+      const tx = new Transaction().add(
+        solInstruction(
+          wallet?.publicKey,
+          new PublicKey(devNet),
+          +(cost * totalToMint).toFixed(4)
+        )
+      );
+      tx.feePayer = wallet?.publicKey;
+      tx.recentBlockhash = blockhash.blockhash;
+      let signedTx;
+      if (wallet.signTransaction !== undefined) {
+        signedTx = await wallet.signTransaction(tx);
+        let txId = await connection.sendRawTransaction(signedTx.serialize(), {
+          skipPreflight: true,
+          maxRetries: 3,
+          preflightCommitment: "confirmed",
+        });
+        await connection.confirmTransaction(txId, "confirmed");
+        const confirmed = await axios.post(
+          `https://solgods.onrender.com/user/mintart/`,
+          {
+            hash: txId,
+          },
+          {
+            validateStatus: () => true,
+          }
+        );
+        if (confirmed.data.error || confirmed.status !== 200) {
+          errorAlert(
+            `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
+          );
+        } else {
+          if (confirmed.data?.message === "0 NFT minted") {
+            errorAlert(`Error! Something went wrong minting your NFT.`);
+          } else {
+            successAlert("Successfully minted!");
+          }
+          setLoading(false);
+        }
+      }
+    } catch (e: any) {
+      console.log(e);
+      //   const msg = fromTxError(e);
+      //   if (msg) {
+      //     toast.error(msg.message);
+      //   } else {
+      //     const msg = e.message || e.toString();
+      //     toast.error(msg);
+      //   }
+    } finally {
+      setLoading(false);
+    }
     // // refetchBalance();
   };
 
@@ -129,7 +123,7 @@ export default function Mint() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full mt-[90px] flex-col">
+    <div className="flex items-center justify-center w-full mt-[90px] flex-col -z-3">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
       <div className="flex flex-col items-center justify-between border-2 border-gray-200 w-[365px] mr-3 p-2 rounded-lg">
         {" "}
@@ -185,9 +179,15 @@ export default function Mint() {
           Back to Home
         </span>
       </Link>
-      {/* <div className="z-[9999] absolute top-0 bottom-0 left-0 right-0 bg-transparent bg-opacity-10 backdrop-blur-md flex items-center justify-center">
-        <PuffLoader color="red" size={80} />
-      </div> */}
+      <div
+        className={`fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center ${
+          loading
+            ? "z-[99] opacity-1 bg-transparent backdrop-blur-xl transition-all duration-300 "
+            : "-z-[9999] opacity-0 transition-all duration-300 "
+        }`}
+      >
+        <FadeLoader color="black" />
+      </div>
     </div>
   );
 }

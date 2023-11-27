@@ -35,7 +35,7 @@ export default function Collection() {
       <div className="flex flex-col gap-10 py-10 overflow-x-hidden">
         <div
           className={`flex gap-5 overflow-x-hidden`}
-          style={{ transform: `translateX(${topOffset - 2000}px)` }}
+          style={{ transform: `translateX(${topOffset - 2100}px)` }}
         >
           <img
             src="img/nft1.png"
@@ -75,7 +75,7 @@ export default function Collection() {
         </div>
         <div
           className={`flex gap-5 overflow-x-hidden`}
-          style={{ transform: `translateX(-${topOffset - 2000}px)` }}
+          style={{ transform: `translateX(-${topOffset - 2200}px)` }}
         >
           <img
             src="img/nft8.png"
@@ -115,7 +115,7 @@ export default function Collection() {
         </div>
         <div
           className={`flex gap-5 overflow-x-hidden`}
-          style={{ transform: `translateX(${topOffset - 2000}px)` }}
+          style={{ transform: `translateX(${topOffset - 2100}px)` }}
         >
           <img
             src="img/nft9.png"
