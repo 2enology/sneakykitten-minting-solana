@@ -51,9 +51,9 @@ export default function Home() {
               Mint now
             </div>
           </Link>
-          <Link href={`/mint`} passHref>
+          <Link href={`/claim`} passHref>
             <button className="flex items-center justify-center gap-2 px-8 py-2 font-extrabold text-black duration-300 bg-white border-b-2 border-black rounded-lg hover:bg-gray-200">
-              Claim
+              Claim Now
             </button>
           </Link>
           <div className="absolute z-10 items-center justify-center hidden lg:flex right-10">
