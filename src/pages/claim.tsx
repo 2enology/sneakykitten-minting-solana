@@ -58,7 +58,7 @@ export default function Claim() {
       setLoading(true);
       console.log("here starts");
       const confirmed = await axios.post(
-        `http://144.126.146.144:8090/user/claimReward/`,
+        `https://solgods.onrender.com/user/claimReward/`,
         {
           address: base58,
         },
