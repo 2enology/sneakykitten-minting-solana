@@ -21,7 +21,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const getMintInfo = async () => {
     try {
       const res = await axios.get(
-        `http://144.126.146.144:8090/user/currentIndex`
+        `https://solgods.onrender.com/user/currentIndex`
       );
 
       const mintData = res.data;
@@ -39,7 +39,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const getClaimReward = async () => {
     if (base58 !== undefined && base58 !== "") {
       const resOfClaim = await axios.get(
-        `http://144.126.146.144:8090/user/claimAmount/`,
+        `https://solgods.onrender.com/user/claimAmount/`,
         {
           params: {
             address: base58,
