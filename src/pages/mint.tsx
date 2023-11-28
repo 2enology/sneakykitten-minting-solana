@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { FadeLoader } from "react-spinners";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MAX_MINTAMOUNT_PERTX, MAX_SUPPLY } from "../config";
 import Link from "next/link";
+import { MintInfoContext } from "../contexts/MintInfoProvider";
 
 import { WalletContextState } from "@solana/wallet-adapter-react";
 import axios from "axios";
@@ -22,8 +23,9 @@ import {
 
 export default function Mint() {
   const imgList = ["img/anim1.png", "img/anim2.png", "img/anim3.png"];
-  const [totalSupply, setTotalSupply] = useState<number>(0);
+  const { totalSupply, getMintInfo } = useContext(MintInfoContext);
   const [loading, setLoading] = useState<boolean>(false);
+  const [totalCount, setTotalCount] = useState(totalSupply);
   const [mounted, setMounted] = useState(false);
   const [mintCount, setMintCount] = useState(1);
   const [turn, setTurn] = useState(0);
@@ -90,7 +92,9 @@ export default function Mint() {
           if (confirmed.data?.message === "0 NFT minted") {
             errorAlert(`Error! Something went wrong minting your NFT.`);
           } else {
+            setTotalCount(confirmed.data.totalSupply);
             successAlert("Successfully minted!");
+            await getMintInfo();
           }
           setLoading(false);
         }
@@ -156,7 +160,7 @@ export default function Mint() {
         <div className="flex items-center justify-center w-full">
           <h1 className="">
             <span className="lg:text-[50px] text-[30px] font-medium ">
-              {totalSupply.toString().padStart(2, "0")}
+              {totalSupply?.toString().padStart(2, "0")}
             </span>
             /
             <span className="text-[20px] font-bold text-[#707070]">
@@ -173,12 +177,20 @@ export default function Mint() {
           Mint Now
         </button>
       </div>
-      <Link href={"/"}>
-        <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:-translate-x-3">
-          <FaArrowLeft />
-          Back to Home
-        </span>
-      </Link>
+      <div className="flex items-center justify-between gap-5">
+        <Link href={"/"}>
+          <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:-translate-x-3">
+            <FaArrowLeft />
+            Back to Home
+          </span>
+        </Link>
+        <Link href={"/claim"}>
+          <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:translate-x-3">
+            To Claim Page
+            <FaArrowRight />
+          </span>
+        </Link>
+      </div>
       <div
         className={`fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center ${
           loading
