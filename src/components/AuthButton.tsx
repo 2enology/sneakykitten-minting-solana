@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./AuthButton.module.scss";
 import { useWallet } from "@solana/wallet-adapter-react";

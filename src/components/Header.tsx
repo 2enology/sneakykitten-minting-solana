@@ -37,10 +37,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="fixed flex items-center justify-center w-full bg-transparent bg-opacity-30 backdrop-blur-md z-[49]">
+    <div className="fixed flex items-center justify-center w-full bg-transparent backdrop-blur-md z-[49]  bg-amber-400">
       <div className="w-full flex justify-between p-[5px] max-w-[1440px]">
-        <Link href={"/"}>
-          <div className="flex items-center justify-center cursor-pointer -z-10 md:z-10">
+        <Link href={"/"} passHref>
+          <div className="flex items-center justify-center cursor-pointer z-4 md:z-10">
             <img src="/favicon.png" className="w-[80px] h-[80px]" alt="" />
           </div>
         </Link>

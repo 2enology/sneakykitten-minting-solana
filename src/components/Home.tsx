@@ -65,9 +65,7 @@ export default function Home() {
         </div>
         <img
           src={imgList[turn]}
-          className={`w-[380px] delay-[2000ms] duration-1000 ${
-            mounted ? "translate-y-0" : "translate-y-20"
-          }`}
+          className={`w-[380px] delay-[2000ms] duration-1000`}
           alt=""
         />
         <div className="absolute bottom-0 left-0 flex-col items-start justify-center hidden md:flex">

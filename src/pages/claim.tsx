@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState, useContext, useMemo } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { FadeLoader } from "react-spinners";
@@ -88,16 +89,16 @@ export default function Claim() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full mt-[90px] flex-col -z-3">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen px-3 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between border-2 border-gray-200 w-[365px] mr-3 p-2 rounded-lg gap-5">
+      <div className="flex flex-col items-center justify-between border-2 border-gray-200 md:w-[365px] w-full md:mr-3 p-2 rounded-lg gap-5">
         {" "}
         <h1 className="text-2xl font-extrabold">
           Total NFTs : {totalSupply} s
         </h1>
         <h1 className="text-2xl font-extrabold">My NFTs : {ownNftCounts} s</h1>
         <h1 className="text-2xl font-extrabold">
-          Claim Rewards : {claimAmount?.toFixed(5)} Sol
+          Claim Rewards : {claimAmount?.toFixed(3)} Sol
         </h1>
         <button
           className="flex items-center justify-center gap-3 px-5 py-3 font-extrabold text-black duration-300 bg-white border-b-2 border-black rounded-lg hover:bg-gray-200"
@@ -109,13 +110,13 @@ export default function Claim() {
         </button>
       </div>
       <div className="flex items-center justify-between gap-5">
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:-translate-x-3">
             <FaArrowLeft />
             Back to Home
           </span>
         </Link>
-        <Link href={"/mint"}>
+        <Link href={"/mint"} passHref>
           <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:translate-x-3">
             To Mint Page
             <FaArrowRight />
