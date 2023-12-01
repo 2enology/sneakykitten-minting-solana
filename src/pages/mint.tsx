@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState, useContext } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { FadeLoader } from "react-spinners";
@@ -127,11 +128,11 @@ export default function Mint() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full mt-[90px] flex-col -z-3">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen px-5 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between border-2 border-gray-200 w-[365px] mr-3 p-2 rounded-lg">
+      <div className="flex flex-col items-center justify-between border-2 border-gray-200  w-full md:w-[365px] mr-3 p-2 rounded-lg">
         {" "}
-        <h1 className="text-2xl font-extrabold">Mint Price : 1000 Sol</h1>
+        <h1 className="text-2xl font-extrabold">Mint Price : 0.25 Sol</h1>
         <div className="flex items-center justify-between w-full">
           <span
             className={`text-black text-[45px] font-bold ${
@@ -178,13 +179,13 @@ export default function Mint() {
         </button>
       </div>
       <div className="flex items-center justify-between gap-5">
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:-translate-x-3">
             <FaArrowLeft />
             Back to Home
           </span>
         </Link>
-        <Link href={"/claim"}>
+        <Link href={"/claim"} passHref>
           <span className="flex items-center justify-center gap-4 mt-5 font-extrabold transition-all duration-300 cursor-pointer hover:translate-x-3">
             To Claim Page
             <FaArrowRight />
