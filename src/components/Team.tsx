@@ -4,7 +4,7 @@ import TeamCard from "./TeamCard";
 const Team = () => {
   return (
     <div
-      className="w-full flex justify-center p-[5px] max-w-[1340px] flex-col"
+      className="w-full flex justify-center p-[5px] max-w-[1344px] flex-col pt-[50px]"
       id="team"
     >
       <div className="flex flex-col">

@@ -4,8 +4,11 @@ import { FaArrowDown } from "react-icons/fa";
 
 export default function About() {
   return (
-    <div className="flex items-center justify-center w-full mt-10" id="about">
-      <div className="w-full flex justify-center p-[5px] max-w-[1340px] flex-col">
+    <div
+      className="flex items-center justify-center w-full pt-[50px]"
+      id="about"
+    >
+      <div className="w-full flex justify-center p-[5px] max-w-[1344px] flex-col">
         <div className="flex flex-col">
           <div className="flex flex-col items-center justify-center gap-10 mx-10 my-10 lg:flex-row">
             <div className="relative">
@@ -91,7 +94,7 @@ export default function About() {
                 <span className="text-lg font-semibold text-center text-gray-700">
                   <span className="text-2xl font-bold text-center text-red-500 font-Gulfs">
                     {" "}
-                    {`2. Flare Delegation Pool:`}{" "}
+                    {`2. Flare Delegation Pool`}{" "}
                   </span>
                   <br />
                   <span className="text-lg font-bold text-center text-gray-700">
@@ -103,7 +106,7 @@ export default function About() {
                 <span className="text-lg font-semibold text-center text-gray-700">
                   <span className="text-2xl font-bold text-center text-red-500 font-Gulfs">
                     {" "}
-                    {`3. Secondary Sales:`}{" "}
+                    {`3. Secondary Sales`}{" "}
                   </span>
                   <br />
                   <span className="text-lg font-bold text-center text-gray-700">

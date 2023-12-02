@@ -111,7 +111,7 @@ const Roadmap = () => {
   }
   return (
     <div
-      className="w-full flex justify-center p-[5px] max-w-[1340px] flex-col mt-10"
+      className="w-full flex justify-center p-[5px] max-w-[1344px] flex-col pt-[50px]"
       id="roadmap"
     >
       <div className="flex flex-col">

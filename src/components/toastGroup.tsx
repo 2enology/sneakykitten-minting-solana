@@ -9,7 +9,6 @@ export const errorAlert = (text: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored",
   });
 };
 
@@ -21,7 +20,6 @@ export const errorAlertCenter = (text: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored",
   });
 };
 
@@ -33,7 +31,6 @@ export const warningAlert = (text: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored",
   });
 };
 
@@ -45,7 +42,6 @@ export const successAlert = (text: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored",
   });
 };
 
@@ -57,6 +53,5 @@ export const infoAlert = (text: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored",
   });
 };

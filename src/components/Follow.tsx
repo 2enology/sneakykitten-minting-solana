@@ -39,20 +39,23 @@ export default function Follow() {
       className="flex items-center justify-center w-full mb-10"
       id="followus"
     >
-      <div className="w-full flex justify-center p-[5px] max-w-[1340px] flex-col">
-        <div className="flex flex-col w-full mt-10">
+      <div className="w-full flex justify-center p-[5px] max-w-[1344px] flex-col">
+        <div className="flex flex-col items-center justify-center w-full mt-10">
+          <div className="relative">
+            <p className="uppercase text-[40px] md:text-[80px] font-bold font-Gulfs text-white text-shadow1">
+              Follow
+            </p>
+            <p className="uppercase text-xl -rotate-[20deg] font-bold font-Gulfs text-[#F8450B] absolute top-0 left-0">
+              Us
+            </p>
+          </div>
           <span className="flex items-center justify-center gap-3 ">
-            <span className="md:text-[70px] text-[30px] font-Gulfs text-[#FFFDF1] text-shadow1">
-              FOLLOW US
-            </span>{" "}
-          </span>
-          <span className="flex items-center justify-center gap-3 ">
-            <span className="md:text-[70px] text-[30px] font-Gulfs text-black">
+            <span className="md:text-[60px] text-[30px] font-Gulfs text-black">
               ON SOCIAL
             </span>{" "}
           </span>
           <span className="flex items-center justify-center gap-3 ">
-            <span className="md:text-[70px] text-[30px] font-Gulfs text-black">
+            <span className="md:text-[60px] text-[30px] font-Gulfs text-black">
               MEDIA
             </span>{" "}
           </span>

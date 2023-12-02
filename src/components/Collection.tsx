@@ -17,7 +17,7 @@ export default function Collection() {
   }, []);
   return (
     <div
-      className="w-full flex justify-center p-[5px] max-w-[1340px] flex-col md:mt-[200px]"
+      className="w-full flex justify-center p-[5px] max-w-[1344px] flex-col md:mt-[200px]"
       id="collection"
     >
       <div className="flex flex-col">
