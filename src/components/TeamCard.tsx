@@ -9,18 +9,16 @@ const TeamCard = (props: {
   linkedinUrl: string;
 }) => {
   return (
-    <div className="rounded-2xl border-black border-[2px] border-b-[8px] flex flex-col items-center md:p-[80px] p-[30px] gap-5">
+    <div className="rounded-2xl border-black border-[2px] border-b-[8px] flex flex-col items-center md:p-[70px] p-[30px] gap-5 text-center bg-white">
       <img
         src={props.imgUrl}
-        className="rounded-full w-full h-full object-cover max-h-[250px]"
+        className="rounded-full w-full h-full object-cover max-h-[250px] border-b-4 border-black"
         alt=""
       />
-      <p className="uppercase text-[36px] font-bold font-gulf text-[black]">
+      <p className="uppercase text-[36px] font-bold font-gulf text-[black] font-Gulfs">
         {props.name}
       </p>
-      <p className="uppercase text-[12px] font-bold text-[#535353]">
-        {props.role}
-      </p>
+      <p className="text-lg font-bold text-gray-700 uppercase">{props.role}</p>
       <div className="flex justify-center gap-5">
         <a
           href={props.twitterUrl}

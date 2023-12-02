@@ -76,6 +76,7 @@ export default function Claim() {
           errorAlert(`Error! `);
         } else {
           successAlert("Successfully Claimed!");
+          window.location.reload();
           await getMintInfo();
         }
         setLoading(false);
@@ -91,7 +92,7 @@ export default function Claim() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen px-3 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between border-2 border-gray-200 md:w-[365px] w-full md:mr-3 p-2 rounded-lg gap-5">
+      <div className="flex flex-col items-center justify-between shadow-2xl md:w-[365px] w-full md:mr-3 p-2 rounded-lg gap-5">
         {" "}
         <h1 className="text-2xl font-extrabold">
           Total NFTs : {totalSupply} s

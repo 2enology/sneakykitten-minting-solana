@@ -53,51 +53,52 @@ export default function Mint() {
     setLoading(true);
     try {
       if (!wallet.publicKey) {
-        return;
         warningAlert("Please Connect wallet!");
-      }
-      setLoading(true);
-      const blockhash = await connection.getLatestBlockhash();
-      const tx = new Transaction().add(
-        solInstruction(
-          wallet?.publicKey,
-          new PublicKey(devNet),
-          +(cost * totalToMint).toFixed(4)
-        )
-      );
-      tx.feePayer = wallet?.publicKey;
-      tx.recentBlockhash = blockhash.blockhash;
-      let signedTx;
-      if (wallet.signTransaction !== undefined) {
-        signedTx = await wallet.signTransaction(tx);
-        let txId = await connection.sendRawTransaction(signedTx.serialize(), {
-          skipPreflight: true,
-          maxRetries: 3,
-          preflightCommitment: "confirmed",
-        });
-        await connection.confirmTransaction(txId, "confirmed");
-        const confirmed = await axios.post(
-          `https://solgods.onrender.com/user/mintart/`,
-          {
-            hash: txId,
-          },
-          {
-            validateStatus: () => true,
-          }
+      } else {
+        setLoading(true);
+        const blockhash = await connection.getLatestBlockhash();
+        const tx = new Transaction().add(
+          solInstruction(
+            wallet?.publicKey,
+            new PublicKey(devNet),
+            +(cost * totalToMint).toFixed(4)
+          )
         );
-        if (confirmed.data.error || confirmed.status !== 200) {
-          errorAlert(
-            `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
+        tx.feePayer = wallet?.publicKey;
+        tx.recentBlockhash = blockhash.blockhash;
+        let signedTx;
+        if (wallet.signTransaction !== undefined) {
+          signedTx = await wallet.signTransaction(tx);
+          let txId = await connection.sendRawTransaction(signedTx.serialize(), {
+            skipPreflight: true,
+            maxRetries: 3,
+            preflightCommitment: "confirmed",
+          });
+          await connection.confirmTransaction(txId, "confirmed");
+          const confirmed = await axios.post(
+            `https://solgods.onrender.com/user/mintart/`,
+            {
+              hash: txId,
+            },
+            {
+              validateStatus: () => true,
+            }
           );
-        } else {
-          if (confirmed.data?.message === "0 NFT minted") {
-            errorAlert(`Error! Something went wrong minting your NFT.`);
+          if (confirmed.data.error || confirmed.status !== 200) {
+            errorAlert(
+              `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
+            );
           } else {
-            setTotalCount(confirmed.data.totalSupply);
-            successAlert("Successfully minted!");
-            await getMintInfo();
+            if (confirmed.data?.message === "0 NFT minted") {
+              errorAlert(`Error! Something went wrong minting your NFT.`);
+            } else {
+              setTotalCount(confirmed.data.totalSupply);
+              successAlert("Successfully minted!");
+              window.location.reload();
+              await getMintInfo();
+            }
+            setLoading(false);
           }
-          setLoading(false);
         }
       }
     } catch (e: any) {
@@ -130,12 +131,12 @@ export default function Mint() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen px-5 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between border-2 border-gray-200  w-full md:w-[365px] mr-3 p-2 rounded-lg">
+      <div className="flex flex-col items-center justify-between shadow-2xl w-full md:w-[365px] mr-3 p-2 rounded-lg">
         {" "}
         <h1 className="text-2xl font-extrabold">Mint Price : 0.25 Sol</h1>
         <div className="flex items-center justify-between w-full">
           <span
-            className={`text-black text-[45px] font-bold ${
+            className={`text-black text-[60px] font-bold ${
               mintCount === 1
                 ? "cursor-not-allowed text-gray-400"
                 : "cursor-pointer"

@@ -3,7 +3,7 @@ import Collapse from "./Collapse";
 const Faq = () => {
   return (
     <div
-      className="w-full flex justify-center p-[5px] max-w-[1040px] flex-col"
+      className="w-full flex justify-center p-[5px] max-w-[1040px] flex-col pt-[50px]"
       id="faq"
     >
       <div className="flex flex-col">
