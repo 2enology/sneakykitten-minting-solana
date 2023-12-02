@@ -1,3 +1,4 @@
+import { Bounce } from "react-awesome-reveal";
 import TeamCard from "./TeamCard";
 
 const Team = () => {
@@ -17,29 +18,31 @@ const Team = () => {
             </p>
           </div>
         </div>
-        <div className="grid w-full gap-10 p-10 lg:grid-cols-3 grid-col-1 md:grid-cols-2">
-          <TeamCard
-            name={"Arjun"}
-            imgUrl={"img/nft2.png"}
-            role={"designer & co-founder"}
-            twitterUrl={"https://twitter.com/Sneaky_labs"}
-            linkedinUrl={""}
-          />
-          <TeamCard
-            name={"Sam"}
-            imgUrl={"img/nft5.png"}
-            role={"Developer & co-founder"}
-            twitterUrl={"https://twitter.com/saadakb27044496"}
-            linkedinUrl={""}
-          />
-          <TeamCard
-            name={"Lukas"}
-            imgUrl={"img/nft9.png"}
-            role={"FrontEnd & Blockchain Developer"}
-            twitterUrl={"https://twitter.com/zenosy1020"}
-            linkedinUrl={"https://www.linkedin.com/in/zenosy/"}
-          />
-        </div>
+        <Bounce>
+          <div className="grid w-full gap-10 p-10 lg:grid-cols-3 grid-col-1 md:grid-cols-2">
+            <TeamCard
+              name={"Arjun"}
+              imgUrl={"img/nft2.png"}
+              role={"designer & co-founder"}
+              twitterUrl={"https://twitter.com/Sneaky_labs"}
+              linkedinUrl={""}
+            />
+            <TeamCard
+              name={"Sam"}
+              imgUrl={"img/nft5.png"}
+              role={"Developer & co-founder"}
+              twitterUrl={"https://twitter.com/saadakb27044496"}
+              linkedinUrl={""}
+            />
+            <TeamCard
+              name={"Lukas"}
+              imgUrl={"img/nft9.png"}
+              role={"FrontEnd & Blockchain Developer"}
+              twitterUrl={"https://twitter.com/zenosy1020"}
+              linkedinUrl={"https://www.linkedin.com/in/zenosy/"}
+            />
+          </div>
+        </Bounce>
       </div>
     </div>
   );

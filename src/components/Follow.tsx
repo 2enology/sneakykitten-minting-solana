@@ -79,7 +79,7 @@ export default function Follow() {
 
       {isVisible && (
         <div
-          className="fixed bottom-10 right-10 p-3 bg-[#FFFDF1] border-[1px] border-black shadow-xl rounded-full cursor-pointer animate-bounce z-50"
+          className="fixed bottom-10 right-10 p-3 bg-[#FFFDF1] border-[1px] border-black shadow-xl rounded-tr-3xl rounded-bl-3xl cursor-pointer z-50"
           onClick={() => scrollToTop()}
         >
           <FaArrowUp color="black" />
