@@ -20,7 +20,7 @@ const Roadmap = () => {
       title: "Website Launch and Marketing",
       content:
         "Our official website goes live, featuring a user-friendly interface and immersive lore of the Sneaky Kittens world. Marketing campaigns to amplify our presence.",
-      done: false,
+      done: true,
     },
     {
       image: "img/nft3.png",
@@ -74,7 +74,7 @@ const Roadmap = () => {
         <div className="flex justify-center w-1/2 lg:border-r-2">
           <img
             src={cardInfo[i].image}
-            className="w-full h-full rounded-full"
+            className="w-full h-full p-2 rounded-full"
             alt=""
           />
         </div>
@@ -124,7 +124,7 @@ const Roadmap = () => {
               our
             </p>
           </div>
-          <p className="uppercase text-[20px] font-medium text-[black] text-center">
+          <p className="uppercase text-[20px] font-bold text-[black] text-center">
             {` Our roadmap is the compass that guides the Sneaky Kittens NFT
             project, marking out our journey from inception to realization and
             beyond. It's a declaration of our planned initiatives, a timeline of

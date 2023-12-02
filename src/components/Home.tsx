@@ -59,7 +59,7 @@ export default function Home() {
           <div className="absolute z-10 items-center justify-center hidden lg:flex right-10">
             <img src="img/rabbit.svg" alt="" />
           </div>
-          <div className="absolute z-20 items-center justify-center hidden lg:flex right-12 animate-spin">
+          <div className="absolute z-20 items-center justify-center hidden lg:flex right-12 element">
             <img src="img/circle.svg" alt="" />
           </div>
         </div>
@@ -68,10 +68,10 @@ export default function Home() {
           className={`w-[380px] delay-[2000ms] duration-1000`}
           alt=""
         />
-        <div className="absolute bottom-0 left-0 flex-col items-start justify-center hidden md:flex">
-          <h1 className="font-bold text-[15px]">A NEW WAVE</h1>
-          <h1 className="font-bold text-[15px]">COLLECTION IS ABOUT</h1>
-          <h1 className="font-bold text-[15px]">TO HIT THE SOLANA NETWORK</h1>
+        <div className="absolute bottom-0 left-0 flex-col items-start justify-center hidden md:flex font-Gulfs">
+          <h1 className="font-light text-[15px]">A NEW WAVE</h1>
+          <h1 className="font-light text-[15px]">COLLECTION IS ABOUT</h1>
+          <h1 className="font-light text-[15px]">TO HIT THE SOLANA NETWORK</h1>
         </div>
       </div>
     </div>

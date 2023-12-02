@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { Slide } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
+import { FaArrowDown } from "react-icons/fa";
 
 export default function About() {
   return (
@@ -18,7 +19,7 @@ export default function About() {
           </div>
         </div>
         <div className="flex flex-col w-full gap-4 mt-10">
-          <Slide>
+          <Fade>
             <span className="flex items-center justify-center gap-3">
               <span className="text-[20px] md:text-[40px] lg:text-[50px] xl:text-[70px] font-Gulfs text-[#FFFDF1] text-shadow2">
                 5000
@@ -59,7 +60,7 @@ export default function About() {
               </span>
             </span>
             <span className="flex items-center justify-center gap-3 ">
-              <span className="text-lg font-semibold text-center text-gray-700">
+              <span className="text-lg font-extrabold text-center text-gray-700">
                 {` Discover our enchanting collection of 5,000 unique Sneaky Kittens
               NFTs, each with its own personality and charm. As a part of our
               community, you’re not just owning a piece of digital art, you're
@@ -67,43 +68,52 @@ export default function About() {
               fantastic passive income.`}
               </span>
             </span>
-            <span className="text-[20px] md:text-[25px] lg:text-[30px] xl:text-[40px] font-Gulfs text-red-500">
-              Benefits of NFTs:
-            </span>
-            <span className="flex flex-col items-start justify-start gap-3 ">
-              <span className="text-lg font-semibold text-gray-700 text-start">
-                <span className="text-lg font-bold text-red-500 text-start">
-                  {" "}
-                  {`Community Rewards:`}{" "}
+            <div className="flex flex-col items-center justify-center w-full gap-5">
+              <div className="flex items-center justify-center gap-2">
+                <FaArrowDown color="black" size={25} />
+                <span className="text-[20px] md:text-[25px] lg:text-[30px] xl:text-[40px] font-Gulfs text-red-500 text-shadow2">
+                  Benefits of NFTs
                 </span>
-                <span className="text-lg font-semibold text-gray-700 bg-green-400 text-start">
-                  {" "}
-                  {` 15% of the mint cost is shared with NFT holders. Mint early to claim a larger share of every new mint!`}{" "}
+                <FaArrowDown color="black" size={25} />
+              </div>
+              <div className="flex flex-col items-center justify-center gap-3 bg-white rounded-xl p-4 max-w-[1000px] border-b-[8px] border-black border-[1px]">
+                <span className="font-semibold text-center text-gray-700">
+                  <span className="text-2xl font-bold text-center text-red-500 font-Gulfs">
+                    {" "}
+                    {`1. Community Rewards`}{" "}
+                  </span>
+                  <br />
+                  <span className="text-lg font-bold text-center text-gray-700">
+                    {" "}
+                    {` 15% of the mint cost is shared with NFT holders. Mint early to claim a larger share of every new mint!`}{" "}
+                  </span>
                 </span>
-              </span>
-              <span className="text-lg font-semibold text-gray-700 text-start">
-                <span className="text-lg font-bold text-red-500 text-start">
-                  {" "}
-                  {`Flare Delegation Pool:`}{" "}
+                <span className="text-lg font-semibold text-center text-gray-700">
+                  <span className="text-2xl font-bold text-center text-red-500 font-Gulfs">
+                    {" "}
+                    {`2. Flare Delegation Pool:`}{" "}
+                  </span>
+                  <br />
+                  <span className="text-lg font-bold text-center text-gray-700">
+                    {" "}
+                    {`25% of the mint cost supports the Flare delegation pool, earning FLR weekly and Flaredrops monthly, which are converted to SOL for distribution to NFT holders.`}{" "}
+                    {`And yes, 28 months of Flaredrops are still coming!`}
+                  </span>
                 </span>
-                <span className="text-lg font-semibold text-gray-700 bg-green-400 text-start">
-                  {" "}
-                  {`25% of the mint cost supports the Flare delegation pool, earning FLR weekly and Flaredrops monthly, which are converted to SOL for distribution to NFT holders.`}{" "}
-                  {`And yes, 28 months of Flaredrops are still coming!`}
+                <span className="text-lg font-semibold text-center text-gray-700">
+                  <span className="text-2xl font-bold text-center text-red-500 font-Gulfs">
+                    {" "}
+                    {`3. Secondary Sales:`}{" "}
+                  </span>
+                  <br />
+                  <span className="text-lg font-bold text-center text-gray-700">
+                    {" "}
+                    {`Enjoy a 5% return from secondary sales directly to NFT holders.`}{" "}
+                  </span>
                 </span>
-              </span>
-              <span className="text-lg font-semibold text-gray-700 text-start">
-                <span className="text-lg font-bold text-red-500 text-start">
-                  {" "}
-                  {`Secondary Sales:`}{" "}
-                </span>
-                <span className="text-lg font-semibold text-gray-700 bg-green-400 text-start">
-                  {" "}
-                  {`Enjoy a 5% return from secondary sales directly to NFT holders.`}{" "}
-                </span>
-              </span>
-            </span>
-          </Slide>
+              </div>
+            </div>
+          </Fade>
         </div>
       </div>
     </div>
