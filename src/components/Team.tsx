@@ -1,4 +1,4 @@
-import { Bounce } from "react-awesome-reveal";
+import { AttentionSeeker, Bounce, Fade, Hinge } from "react-awesome-reveal";
 import TeamCard from "./TeamCard";
 
 const Team = () => {
@@ -18,8 +18,8 @@ const Team = () => {
             </p>
           </div>
         </div>
-        <Bounce>
-          <div className="grid w-full gap-10 p-10 lg:grid-cols-3 grid-col-1 md:grid-cols-2">
+        <Fade>
+          <div className="grid w-full gap-10 p-2 lg:grid-cols-3 grid-col-1 md:grid-cols-2">
             <TeamCard
               name={"Arjun"}
               imgUrl={"img/nft2.png"}
@@ -42,7 +42,7 @@ const Team = () => {
               linkedinUrl={"https://www.linkedin.com/in/zenosy/"}
             />
           </div>
-        </Bounce>
+        </Fade>
       </div>
     </div>
   );

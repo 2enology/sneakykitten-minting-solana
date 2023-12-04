@@ -12,7 +12,7 @@ const TeamCard = (props: {
     <div className="rounded-2xl border-black border-[2px] border-b-[8px] flex flex-col items-center md:p-[70px] p-[30px] gap-5 text-center bg-white">
       <img
         src={props.imgUrl}
-        className="rounded-full w-full h-full object-cover max-h-[250px] border-b-4 border-black"
+        className="object-cover w-full border-b-4 border-black rounded-2xl"
         alt=""
       />
       <p className="uppercase text-[36px] font-bold font-gulf text-[black] font-Gulfs">

@@ -39,6 +39,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   };
 
   const getClaimReward = async () => {
+    console.log("base58", base58);
     if (base58 !== undefined && base58 !== "") {
       const resOfClaim = await axios.get(
         `https://sol.sneakylabs.art/user/claimAmount/`,
@@ -57,10 +58,20 @@ const MintInfoProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getMintInfo();
+    const interval = setInterval(() => {
+      getMintInfo();
+    }, 20000);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    getClaimReward();
+    if (wallet) {
+      getClaimReward();
+      const interval = setInterval(() => {
+        getClaimReward();
+      }, 20000);
+      return () => clearInterval(interval);
+    }
   }, [wallet]);
 
   return (
