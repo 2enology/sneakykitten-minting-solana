@@ -112,7 +112,7 @@ export default function Claim() {
         </Link>
       </div>
       <div
-        className={`fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center font-bold uppercase ${
+        className={`fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center font-extrabold uppercase ${
           loading
             ? "z-[99] opacity-1 bg-transparent backdrop-blur-xl transition-all duration-300 "
             : "-z-[9999] opacity-0 transition-all duration-300 "
