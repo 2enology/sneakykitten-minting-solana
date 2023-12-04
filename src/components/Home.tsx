@@ -41,7 +41,7 @@ export default function Home() {
           <div className="absolute z-10 items-center justify-center hidden md:flex right-10 bottom-5">
             <img src="img/rabbit.svg" alt="" />
           </div>
-          <div className="absolute z-20 items-center justify-center hidden md:flex right-12 element bottom-5">
+          <div className="absolute z-20 items-center justify-center hidden md:flex right-12 element bottom-7">
             <img src="img/circle.svg" alt="" />
           </div>
         </div>
