@@ -132,7 +132,7 @@ const Roadmap = () => {
             community's growth and the value of their investments.`}
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center gap-3 mx-10">
+        <div className="flex flex-col items-center justify-center gap-3 mx-2">
           {cards}
         </div>
       </div>

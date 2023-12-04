@@ -88,7 +88,7 @@ export default function Mint() {
               errorAlert(`Error! Something went wrong minting your NFT.`);
             } else {
               setTotalCount(confirmed.data.totalSupply);
-              successAlert("Successfully minted!");
+              successAlert("Minting NFTs, you'll get your nft in 5 min.");
               await getMintInfo();
             }
             setLoading(false);
@@ -118,8 +118,7 @@ export default function Mint() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen px-5 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between shadow-2xl w-full md:w-[365px] mr-3 p-2 rounded-lg">
-        {" "}
+      <div className="flex flex-col items-center justify-between shadow-2xl w-full md:w-[500px] mr-3 p-2 rounded-lg">
         <h1 className="text-2xl font-extrabold">Mint Price : 0.25 Sol</h1>
         <div className="flex items-center justify-between w-full">
           <span

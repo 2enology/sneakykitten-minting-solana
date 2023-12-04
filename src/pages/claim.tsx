@@ -43,7 +43,7 @@ export default function Claim() {
   const base58 = useMemo(() => publicKey?.toBase58() || "", [publicKey]);
 
   const handleClaimReward = async () => {
-    setLoading(true);
+    console.log("base58 ====>", base58);
     try {
       if (!wallet.publicKey) {
         warningAlert("Please Connect wallet!");
@@ -52,7 +52,7 @@ export default function Claim() {
       } else {
         setLoading(true);
         const confirmed = await axios.post(
-          `https://solgods.onrender.com/user/claimReward/`,
+          `https://sol.sneakylabs.art/user/claimReward/`,
           {
             address: base58,
           },
@@ -85,16 +85,18 @@ export default function Claim() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen px-3 -z-3 bg-amber-400">
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
-      <div className="flex flex-col items-center justify-between shadow-2xl md:w-[365px] w-full md:mr-3 p-2 rounded-lg gap-5">
+      <div className="flex flex-col items-center justify-between shadow-2xl md:w-[505px] w-full md:mr-3 p-2 rounded-lg gap-5">
         {" "}
-        <h1 className="text-2xl font-extrabold">
+        <h1 className="font-extrabold text-md md:text-2xl">
           Total NFTs : {totalSupply} s
         </h1>
-        <h1 className="text-2xl font-extrabold">My NFTs : {ownNftCounts} s</h1>
-        <h1 className="text-2xl font-extrabold">
-          Claim Rewards : {claimAmount?.toFixed(4)} Sol
+        <h1 className="font-extrabold text-md md:text-2xl">
+          My NFTs : {ownNftCounts} s
         </h1>
-        <h1 className="text-2xl font-extrabold">
+        <h1 className="font-extrabold text-md md:text-2xl">
+          Claim Rewards : {claimAmount?.toFixed(6)} Sol
+        </h1>
+        <h1 className="font-extrabold text-md md:text-2xl">
           Lifetime Rewards : {lifeTimeReward?.toFixed(4)} Sol
         </h1>
         <button
