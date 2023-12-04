@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { FadeLoader } from "react-spinners";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { MAX_MINTAMOUNT_PERTX, MAX_SUPPLY } from "../config";
+import { DEV_WALLET, MAX_MINTAMOUNT_PERTX, MAX_SUPPLY } from "../config";
 import Link from "next/link";
 import { MintInfoContext } from "../contexts/MintInfoProvider";
 
@@ -27,11 +27,9 @@ export default function Mint() {
   const { totalSupply, getMintInfo } = useContext(MintInfoContext);
   const [loading, setLoading] = useState<boolean>(false);
   const [totalCount, setTotalCount] = useState(totalSupply);
-  const [mounted, setMounted] = useState(false);
   const [mintCount, setMintCount] = useState(1);
   const [turn, setTurn] = useState(0);
   const wallet = useWallet();
-  const devNet = "DH8ozTSc4ZxeHTw15MyLUGCdfytSBTSvYP4erXw1P8wk";
   const cost = 0.25;
 
   const rpcUrl = new Connection("https://api.devnet.solana.com");
@@ -40,9 +38,6 @@ export default function Mint() {
       setTurn((prevTurn) => (prevTurn === 2 ? 0 : prevTurn + 1));
     }, 200);
     return () => clearInterval(interval);
-  }, []);
-  useEffect(() => {
-    setMounted(true);
   }, []);
 
   const handleMintWithPhantom = async (
@@ -60,7 +55,7 @@ export default function Mint() {
         const tx = new Transaction().add(
           solInstruction(
             wallet?.publicKey,
-            new PublicKey(devNet),
+            new PublicKey(DEV_WALLET),
             +(cost * totalToMint).toFixed(4)
           )
         );
@@ -76,7 +71,7 @@ export default function Mint() {
           });
           await connection.confirmTransaction(txId, "confirmed");
           const confirmed = await axios.post(
-            `https://solgods.onrender.com/user/mintart/`,
+            `https://sol.sneakylabs.art/user/mintart/`,
             {
               hash: txId,
             },
@@ -94,7 +89,6 @@ export default function Mint() {
             } else {
               setTotalCount(confirmed.data.totalSupply);
               successAlert("Successfully minted!");
-              window.location.reload();
               await getMintInfo();
             }
             setLoading(false);
@@ -103,13 +97,6 @@ export default function Mint() {
       }
     } catch (e: any) {
       console.log(e);
-      //   const msg = fromTxError(e);
-      //   if (msg) {
-      //     toast.error(msg.message);
-      //   } else {
-      //     const msg = e.message || e.toString();
-      //     toast.error(msg);
-      //   }
     } finally {
       setLoading(false);
     }

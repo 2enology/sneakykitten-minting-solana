@@ -35,20 +35,6 @@ export default function Claim() {
 
   const base58 = useMemo(() => publicKey?.toBase58() || "", [publicKey]);
 
-  const devNet = "DH8ozTSc4ZxeHTw15MyLUGCdfytSBTSvYP4erXw1P8wk";
-  const cost = 0.25;
-
-  const rpcUrl = new Connection("https://api.devnet.solana.com");
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTurn((prevTurn) => (prevTurn === 2 ? 0 : prevTurn + 1));
-    }, 200);
-    return () => clearInterval(interval);
-  }, []);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const handleClaimReward = async () => {
     setLoading(true);
     try {
@@ -86,7 +72,6 @@ export default function Claim() {
     } finally {
       setLoading(false);
     }
-    // // refetchBalance();
   };
 
   return (
