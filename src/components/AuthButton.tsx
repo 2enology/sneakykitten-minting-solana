@@ -30,19 +30,12 @@ const ConnectWalletButton = () => {
         setVisible(true);
       }}
     >
-      {/* <img
-        alt=""
-        src="/img/solanaIcon.png"
-        width={25}
-        className="rounded-full"
-      /> */}
       Connect Wallet
     </button>
   );
 };
 
 const ProfileButton = () => {
-  const router = useRouter();
   const { disconnect, publicKey } = useWallet();
   const base58 = useMemo(() => publicKey?.toBase58() || "", [publicKey]);
   const [open, setOpen] = useState(false);
