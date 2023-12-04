@@ -48,7 +48,7 @@ const Collapse = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <p className="text-lg font-medium text-gray-600 leading-1">
+              <p className="text-lg font-bold text-gray-600 leading-1">
                 {index === 0 &&
                   "Sneaky Kittens NFTs are a collection of 5,000 uniquely designed digital kittens created by Sneaky Labs. These virtual felines exist on the Solana blockchain, a popular platform known for its speed and efficiency in handling transactions. Each Sneaky Kitten is distinct, with a diverse range of over 100 traits that give each one a unique appearance and personality. Owners of these NFTs can enjoy exclusive utilities that may include member benefits, access to events, or other digital assets. Additionally, holding a Sneaky Kitten NFT could provide a passive income stream, as owners might earn SOL, Solana's native cryptocurrency, on a monthly basis. This combination of artistry, exclusivity, and financial incentive makes Sneaky Kittens an appealing project for enthusiasts in the NFT space."}
                 {index === 1 &&

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 const InfiniteSlider = () => {
   return (
-    <div className="py-4 border-2 border-gray-200 slider">
+    <div className="py-3 border-gray-200 slider">
       <div className="slide-track">
         <div className="flex items-center justify-center text-3xl font-bold slide font font-Gulfs">
           <div className="flex items-center justify-center">

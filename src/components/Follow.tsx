@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  FaTwitter,
-  FaDiscord,
-  FaLinkedin,
-  FaInstagram,
-  FaArrowUp,
-} from "react-icons/fa";
+import { FaTwitter, FaDiscord, FaArrowUp } from "react-icons/fa";
 
 export default function Follow() {
   const [isVisible, setIsVisible] = useState(false);
-  const [clickScrollTopBtnState, setClickScrollTopBtnState] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -17,17 +10,13 @@ export default function Follow() {
         setIsVisible(true);
       } else {
         setIsVisible(false);
-        setClickScrollTopBtnState(false);
       }
     };
-
     window.addEventListener("scroll", toggleVisibility);
-
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    setClickScrollTopBtnState(true);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -65,7 +54,7 @@ export default function Follow() {
             href="https://twitter.com/Sneaky_labs"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border-2 border-gray-800 rounded-full shadow-xl cursor-pointer shadow-gray-700"
+            className="p-3 transition-all duration-300 bg-white border-2 border-gray-800 rounded-full shadow-xl cursor-pointer shadow-gray-700 hover:translate-y-1"
           >
             <FaTwitter size={30} />
           </a>
@@ -73,7 +62,7 @@ export default function Follow() {
             href="https://discord.gg/55PAppga"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border-2 border-gray-800 rounded-full shadow-xl cursor-pointer shadow-gray-700"
+            className="p-3 transition-all duration-300 bg-white border-2 border-gray-800 rounded-full shadow-xl cursor-pointer shadow-gray-700 hover:translate-y-1"
           >
             <FaDiscord size={30} />
           </a>
@@ -82,7 +71,7 @@ export default function Follow() {
 
       {isVisible && (
         <div
-          className="fixed bottom-10 right-10 p-3 bg-[#FFFDF1] border-[1px] border-black shadow-xl rounded-tr-3xl rounded-bl-3xl cursor-pointer z-50"
+          className="fixed bottom-10 right-10 p-3 bg-[#FFFDF1] border-[1px] border-black shadow-2xl rounded-xl cursor-pointer z-50"
           onClick={() => scrollToTop()}
         >
           <FaArrowUp color="black" />

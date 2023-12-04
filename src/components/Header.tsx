@@ -41,15 +41,15 @@ const Header: React.FC = () => {
       <div className="w-full flex justify-between p-[5px] max-w-[1440px]">
         <Link href={"/"} passHref>
           <div className="flex items-center justify-center cursor-pointer z-4 md:z-10">
-            <img src="/favicon.png" className="w-[80px] h-[80px]" alt="" />
+            <img src="/favicon.png" className="w-[70px] h-[70px]" alt="" />
           </div>
         </Link>
-        <div className="font-extrabold text-[18px] text-gray-800 uppercase md:flex items-center justify-center gap-10 hidden">
+        <div className="font-extrabold text-[18px] text-gray-800 uppercase lg:flex items-center justify-center gap-10 hidden">
           {renderHeaderLinks()}
         </div>
         <div className="flex gap-[18px] items-center z-10">
           <AuthButton />
-          <div className="z-50 flex justify-center item-center md:hidden">
+          <div className="z-50 flex justify-center item-center lg:hidden">
             <HamburgerElasticReverse
               buttonColor="transparent"
               barColor="black"
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
             />
           </div>
           <div className={`mobile-nav ${isActive ? "opened" : ""}`}>
-            <div className="font-extrabold text-[38px] text-gray-800 uppercase md:flex items-center justify-center gap-10 flex flex-col w-full pt-[100px]">
+            <div className="font-extrabold text-[38px] text-gray-800 uppercase lg:flex items-center justify-center gap-10 flex flex-col w-full pt-[100px]">
               {renderHeaderLinks()}
             </div>
           </div>

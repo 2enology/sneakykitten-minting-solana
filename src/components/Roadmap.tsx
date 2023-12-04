@@ -124,7 +124,7 @@ const Roadmap = () => {
               our
             </p>
           </div>
-          <p className="uppercase text-[20px] font-bold text-[black] text-center">
+          <p className="uppercase text-[15px] md:text-[20px] font-bold text-[black] text-center">
             {` Our roadmap is the compass that guides the Sneaky Kittens NFT
             project, marking out our journey from inception to realization and
             beyond. It's a declaration of our planned initiatives, a timeline of
