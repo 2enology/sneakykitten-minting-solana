@@ -24,14 +24,21 @@ import {
 
 export default function Claim() {
   const imgList = ["img/anim1.png", "img/anim2.png", "img/anim3.png"];
-  const { totalSupply, getMintInfo, claimAmount, ownNftCounts } =
-    useContext(MintInfoContext);
+  const {
+    totalSupply,
+    getMintInfo,
+    claimAmount,
+    ownNftCounts,
+    lifeTimeReward,
+  } = useContext(MintInfoContext);
   const [loading, setLoading] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
   const [mintCount, setMintCount] = useState(1);
   const [turn, setTurn] = useState(0);
   const wallet = useWallet();
   const { publicKey } = useWallet();
+
+  console.log("claimeAmount", claimAmount);
 
   const base58 = useMemo(() => publicKey?.toBase58() || "", [publicKey]);
 
@@ -40,32 +47,33 @@ export default function Claim() {
     try {
       if (!wallet.publicKey) {
         warningAlert("Please Connect wallet!");
-      }
-
-      setLoading(true);
-      console.log("here starts");
-      const confirmed = await axios.post(
-        `https://solgods.onrender.com/user/claimReward/`,
-        {
-          address: base58,
-        },
-        {
-          validateStatus: () => true,
-        }
-      );
-      if (confirmed.data.error || confirmed.status !== 200) {
-        errorAlert(
-          `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
-        );
+      } else if (claimAmount === 0) {
+        warningAlert("Claim amount is 0!");
       } else {
-        if (confirmed.data?.message === "0 NFT minted") {
-          errorAlert(`Error! `);
+        setLoading(true);
+        const confirmed = await axios.post(
+          `https://solgods.onrender.com/user/claimReward/`,
+          {
+            address: base58,
+          },
+          {
+            validateStatus: () => true,
+          }
+        );
+        if (confirmed.data.error || confirmed.status !== 200) {
+          errorAlert(
+            `Error!${confirmed.data.error ? ` ${confirmed.data.error}` : ""}`
+          );
         } else {
-          successAlert("Successfully Claimed!");
-          window.location.reload();
-          await getMintInfo();
+          if (confirmed.data?.message === "0 NFT minted") {
+            errorAlert(`Error! `);
+          } else {
+            successAlert("Successfully Claimed!");
+            window.location.reload();
+            await getMintInfo();
+          }
+          setLoading(false);
         }
-        setLoading(false);
       }
     } catch (e: any) {
       console.log(e);
@@ -84,7 +92,10 @@ export default function Claim() {
         </h1>
         <h1 className="text-2xl font-extrabold">My NFTs : {ownNftCounts} s</h1>
         <h1 className="text-2xl font-extrabold">
-          Claim Rewards : {claimAmount?.toFixed(3)} Sol
+          Claim Rewards : {claimAmount?.toFixed(4)} Sol
+        </h1>
+        <h1 className="text-2xl font-extrabold">
+          Lifetime Rewards : {lifeTimeReward?.toFixed(4)} Sol
         </h1>
         <button
           className="flex items-center justify-center gap-3 px-5 py-3 font-extrabold text-black duration-300 bg-white border-b-2 border-black rounded-lg hover:bg-gray-200"

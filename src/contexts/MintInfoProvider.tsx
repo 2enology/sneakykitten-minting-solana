@@ -7,6 +7,7 @@ export const MintInfoContext = createContext<MintInfoContextType>({
   totalSupply: undefined,
   ownNftCounts: undefined,
   claimAmount: undefined,
+  lifeTimeReward: undefined,
   getMintInfo: () => {},
 });
 
@@ -17,6 +18,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const [totalSupply, setTotalSupply] = useState<number | undefined>(0);
   const [ownNftCounts, setOwnNftCounts] = useState<number | undefined>(0);
   const [claimAmount, setClaimAmount] = useState<number | undefined>(0);
+  const [lifeTimeReward, setLifeTimeReward] = useState<number | undefined>(0);
 
   const getMintInfo = async () => {
     try {
@@ -39,7 +41,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const getClaimReward = async () => {
     if (base58 !== undefined && base58 !== "") {
       const resOfClaim = await axios.get(
-        `https://solgods.onrender.com/user/claimAmount/`,
+        `https://sol.sneakylabs.art/user/claimAmount/`,
         {
           params: {
             address: base58,
@@ -49,6 +51,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
       const claimData = resOfClaim.data;
       setOwnNftCounts(claimData?.count);
       setClaimAmount(claimData?.totalAmount);
+      setLifeTimeReward(claimData?.totalClaimedAmount);
     }
   };
 
@@ -64,6 +67,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
     <MintInfoContext.Provider
       value={{
         totalSupply,
+        lifeTimeReward,
         ownNftCounts,
         claimAmount,
         getMintInfo,
