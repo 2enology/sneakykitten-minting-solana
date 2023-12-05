@@ -22,7 +22,7 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const getMintInfo = async () => {
     try {
       const res = await axios.get(
-        `https://solgods.onrender.com/user/currentIndex`
+        `https://sol.sneakylabs.art/user/currentIndex`
       );
 
       const mintData = res.data;
