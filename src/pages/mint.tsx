@@ -90,7 +90,7 @@ export default function Mint() {
               );
             } else {
               ToastGroup.successAlert(
-                "Minting NFTs, you'll get your nft in 5 min."
+                "Minting Now... you'll get your nft within 2 mins."
               );
               await getMintInfo();
             }
