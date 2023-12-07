@@ -3,5 +3,7 @@ export type MintInfoContextType = {
   ownNftCounts: number | undefined;
   claimAmount: number | undefined;
   lifeTimeReward: number | undefined;
+  allowAddr: string | undefined;
+  treasuryVault: number | undefined;
   getMintInfo: Function;
 };

@@ -8,6 +8,8 @@ export const MintInfoContext = createContext<MintInfoContextType>({
   ownNftCounts: undefined,
   claimAmount: undefined,
   lifeTimeReward: undefined,
+  allowAddr: undefined,
+  treasuryVault: undefined,
   getMintInfo: () => {},
 });
 
@@ -18,6 +20,8 @@ const MintInfoProvider: React.FC = ({ children }) => {
   const [ownNftCounts, setOwnNftCounts] = useState<number | undefined>(0);
   const [claimAmount, setClaimAmount] = useState<number | undefined>(0);
   const [lifeTimeReward, setLifeTimeReward] = useState<number | undefined>(0);
+  const [allowAddr, setAllowAddr] = useState<string | undefined>("");
+  const [treasuryVault, setTreasuryVault] = useState<number | undefined>(0);
 
   const getMintInfo = async () => {
     try {
@@ -57,11 +61,33 @@ const MintInfoProvider: React.FC = ({ children }) => {
     }
   };
 
+  const getAdminInfo = async () => {
+    if (base58) {
+      try {
+        const data = await axios.get(
+          `https://sol.sneakylabs.art/user/allowWallet/`
+        );
+        console.log(data);
+        const adminInfo = data.data;
+        setAllowAddr(adminInfo?.allowWallet);
+        setTreasuryVault(adminInfo?.treasuryVault);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   useEffect(() => {
     getMintInfo();
     const mintInfoInterval = setInterval(getMintInfo, 20000);
     return () => clearInterval(mintInfoInterval);
   }, []);
+
+  useEffect(() => {
+    getAdminInfo();
+    const mintInfoInterval = setInterval(getAdminInfo, 20000);
+    return () => clearInterval(mintInfoInterval);
+  }, [base58]);
 
   useEffect(() => {
     if (base58) {
@@ -78,6 +104,8 @@ const MintInfoProvider: React.FC = ({ children }) => {
         lifeTimeReward,
         ownNftCounts,
         claimAmount,
+        allowAddr,
+        treasuryVault,
         getMintInfo,
       }}
     >
