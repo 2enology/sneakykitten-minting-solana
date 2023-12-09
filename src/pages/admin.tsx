@@ -17,14 +17,6 @@ import { FadeLoader } from "react-spinners";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MintInfoContext } from "../contexts/MintInfoProvider";
 
-import {
-  ADMIN_WALLET,
-  DEV_WALLET,
-  MAX_MINTAMOUNT_PERTX,
-  MAX_SUPPLY,
-  rpcUrl,
-} from "../config";
-
 import * as ToastGroup from "../components/ToastGroup";
 
 export default function Admin() {
