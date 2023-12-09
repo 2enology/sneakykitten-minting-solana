@@ -122,7 +122,7 @@ export default function Mint() {
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
       <div className="flex flex-col items-center justify-between shadow-2xl w-full md:w-[500px] mr-3 p-2 rounded-xl">
         <h1 className="text-2xl font-extrabold uppercase">
-          Mint Price : 0.25 Sol
+          Mint Price : {MINT_PRICE} Sol
         </h1>
         {totalSupply !== MAX_SUPPLY && (
           <div className="flex items-center justify-between w-full">
