@@ -16,9 +16,10 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MintInfoContext } from "../contexts/MintInfoProvider";
 
 import {
-  DEV_WALLET,
+  CONTRACTADDR,
   MAX_MINTAMOUNT_PERTX,
   MAX_SUPPLY,
+  MINT_PRICE,
   rpcUrl,
 } from "../config";
 
@@ -31,7 +32,6 @@ export default function Mint() {
   const [mintCount, setMintCount] = useState(1);
   const [turn, setTurn] = useState(0);
   const wallet = useWallet();
-  const cost = 0.25;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,8 +55,8 @@ export default function Mint() {
         const tx = new Transaction().add(
           solInstruction(
             wallet?.publicKey,
-            new PublicKey(DEV_WALLET),
-            +(cost * totalToMint).toFixed(4)
+            new PublicKey(CONTRACTADDR),
+            +(MINT_PRICE * totalToMint).toFixed(4)
           )
         );
         tx.feePayer = wallet?.publicKey;
@@ -122,7 +122,7 @@ export default function Mint() {
       <img src={imgList[turn]} className={`w-[380px]`} alt="" />
       <div className="flex flex-col items-center justify-between shadow-2xl w-full md:w-[500px] mr-3 p-2 rounded-xl">
         <h1 className="text-2xl font-extrabold uppercase">
-          Mint Price : 0.25 Sol
+          Mint Price : {MINT_PRICE} Sol
         </h1>
         {totalSupply !== MAX_SUPPLY && (
           <div className="flex items-center justify-between w-full">
